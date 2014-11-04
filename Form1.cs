@@ -8,15 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
-
 namespace OCR
 {
+
     public partial class Form1 : Form
     {
+        const int ballonStayTime = 3000;
+
+        bool is_OCR_in_using = true;
         public Form1()
         {
             InitializeComponent();
+            //this.notifyIcon1.Visible = false;
+            toolStripMenuItem1.CheckState = CheckState.Checked;
+            notifyIcon1.BalloonTipText = "OCR已开启";
+            notifyIcon1.ShowBalloonTip(ballonStayTime);
         }
+
+
+
         [System.Runtime.InteropServices.DllImport("user32")]
         private static extern IntPtr SetClipboardViewer(IntPtr hwnd);
 
@@ -64,16 +74,18 @@ namespace OCR
 
                     if (iData.GetDataPresent(DataFormats.Bitmap))
                     {
-                        this.Show();
-                        pictureBox1.Image = Clipboard.GetImage();
-                        GetImage gi = new GetImage();
-                        gi.saveImageFromClipboard();
-                        //Thread.Sleep(1000);
-                        GetString gs = new GetString();
-                        string str = gs.myGetString();
-                        richTextBox1.Text = str;
-
-                        //NewClipData();
+                        if (is_OCR_in_using) { 
+                            this.Show();
+                            pictureBox1.Image = Clipboard.GetImage();
+                            GetImage gi = new GetImage();
+                            gi.saveImageFromClipboard();
+                            //Thread.Sleep(1000);
+                            GetString gs = new GetString();
+                            string str = gs.myGetString();
+                            richTextBox1.Text = str;
+                            notifyIcon1.BalloonTipText = str;
+                            notifyIcon1.ShowBalloonTip(ballonStayTime);
+                        }
 
                     }
 
@@ -118,6 +130,61 @@ namespace OCR
             string str = gs.myGetString();
             richTextBox1.Text = str;
         }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();   //隐藏窗体
+                notifyIcon1.Visible = true; //使托盘图标可见
+            }
+
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            //判断可有可无，因为目前的代码出现托盘的时候只会为最小化
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                //还原
+                this.Visible = true;
+                this.WindowState = FormWindowState.Normal;
+            }
+            this.Activate();
+            this.notifyIcon1.Visible = false;
+            this.ShowInTaskbar = true;
+            
+        }
+
+        private void notifyIcon1_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (toolStripMenuItem1.Checked)
+            {
+                toolStripMenuItem1.CheckState=CheckState.Checked;
+                is_OCR_in_using = true;
+                notifyIcon1.BalloonTipText = "OCR已开启";
+                notifyIcon1.ShowBalloonTip(ballonStayTime);
+
+            }
+            else {
+                toolStripMenuItem1.CheckState = CheckState.Unchecked;
+                is_OCR_in_using = false;
+                notifyIcon1.BalloonTipText = "OCR已关闭";
+                notifyIcon1.ShowBalloonTip(ballonStayTime);
+            }
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
 
     }
 }
