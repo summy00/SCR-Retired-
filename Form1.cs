@@ -78,13 +78,15 @@ namespace OCR
                             this.Show();
                             pictureBox1.Image = Clipboard.GetImage();
                             GetImage gi = new GetImage();
-                            gi.saveImageFromClipboard();
+                            string filePath = "";
+                            gi.saveImageFromClipboard(ref filePath);
                             //Thread.Sleep(1000);
                             GetString gs = new GetString();
-                            string str = gs.myGetString();
+                            string str = gs.myGetString(filePath);
                             richTextBox1.Text = str;
                             notifyIcon1.BalloonTipText = str;
                             notifyIcon1.ShowBalloonTip(ballonStayTime);
+                            //System.IO.File.Delete(@"1.png");
                         }
 
                     }
@@ -127,8 +129,8 @@ namespace OCR
         private void button1_Click(object sender, EventArgs e)
         {
             GetString gs = new GetString();
-            string str = gs.myGetString();
-            richTextBox1.Text = str;
+            //string str = gs.myGetString();
+            //richTextBox1.Text = str;
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)

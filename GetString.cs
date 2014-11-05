@@ -34,15 +34,15 @@ namespace OCR
         [DllImport("GVOCR.dll")]
         public static extern bool clearOCR();
 
-        string filePath = @"1.png";
-        public string myGetString()
+        //string filePath = @"1.png";
+        public string myGetString(string path)
         {
-            Bitmap myBitmap = new Bitmap(filePath);
+            Bitmap myBitmap = new Bitmap(path);
             int height = myBitmap.Height;
             int width = myBitmap.Width;
 
             //NGA
-            bool res = setSingleImage(filePath);
+            bool res = setSingleImage(path);
             res = setRecoRectangle(0, 0, width, height);
 
             string resStr = getImageStr();

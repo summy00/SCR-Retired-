@@ -53,9 +53,10 @@ namespace OCR
                 MessageBox.Show("截屏失败！\n" + ex.Message.ToString() + "\n" + ex.StackTrace.ToString());
             }
         }
-        public void saveImageFromClipboard()
+        public void saveImageFromClipboard(ref string outPutPath)
         {
-            string filePath = @"1.png";
+            string filePath = DateTime.Now.ToString("hmmss") + ".png";
+            //string filePath = @"1.png";
             try
             {
 
@@ -66,6 +67,7 @@ namespace OCR
                 //MessageBox.Show(path1);
                 //MessageBox.Show(photoname);
                 _img.Save(filePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                outPutPath = filePath;
                 // _img.Save("D:\\1.jpeg");
                 //SendFile(path1 + "//" + photoname + ".jpg");
             }
