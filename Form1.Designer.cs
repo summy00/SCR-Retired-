@@ -15,6 +15,7 @@
         {
             if (disposing && (components != null))
             {
+                ChangeClipboardChain(this.Handle, NextClipHwnd);
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -74,7 +75,6 @@
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "OCR";
             this.notifyIcon1.Visible = true;
-            this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click_1);
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // 右键菜单
