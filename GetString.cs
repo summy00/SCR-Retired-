@@ -50,7 +50,7 @@ namespace OCR
             //MessageBox.Show(resStr);
             //string resStr = "";
             //getSingleImageStr(resStr);
-            Clipboard.SetDataObject(resStr.ToString());
+            //Clipboard.SetDataObject(resStr.ToString());
             return resStr.ToString();
         }
 

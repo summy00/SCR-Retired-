@@ -7,3 +7,12 @@ E:\Projects\ScreenCaptureReconizer\obj\Debug\ScreenCaptureReconizer.Properties.R
 E:\Projects\ScreenCaptureReconizer\obj\Debug\ScreenCaptureReconizer.csproj.GenerateResource.Cache
 E:\Projects\ScreenCaptureReconizer\obj\Debug\ScreenCaptureReconizer.exe
 E:\Projects\ScreenCaptureReconizer\obj\Debug\ScreenCaptureReconizer.pdb
+F:\Project\Source_git\ScreenCaptureReconizer\bin\Debug\ScreenCaptureReconizer.exe.config
+F:\Project\Source_git\ScreenCaptureReconizer\bin\Debug\ScreenCaptureReconizer.exe
+F:\Project\Source_git\ScreenCaptureReconizer\bin\Debug\ScreenCaptureReconizer.pdb
+F:\Project\Source_git\ScreenCaptureReconizer\obj\Debug\ScreenCaptureReconizer.csprojResolveAssemblyReference.cache
+F:\Project\Source_git\ScreenCaptureReconizer\obj\Debug\OCR.Form1.resources
+F:\Project\Source_git\ScreenCaptureReconizer\obj\Debug\ScreenCaptureReconizer.Properties.Resources.resources
+F:\Project\Source_git\ScreenCaptureReconizer\obj\Debug\ScreenCaptureReconizer.csproj.GenerateResource.Cache
+F:\Project\Source_git\ScreenCaptureReconizer\obj\Debug\ScreenCaptureReconizer.exe
+F:\Project\Source_git\ScreenCaptureReconizer\obj\Debug\ScreenCaptureReconizer.pdb
